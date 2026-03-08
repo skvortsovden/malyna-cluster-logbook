@@ -76,6 +76,27 @@ denys@macbook[~/github/malyna-cluster] (main):$ ssh devops@kalyna.local
 devops@kalyna.local: Permission denied (publickey).
 ```
 
+### Make jump host for SSH access to the cluster
+
+> I want to restrict SSH access to the cluster by allowing only connections from a specific jump host. How can I achieve this?
+
+Copy the public key of the jump host to the worker nodes.
+
+Having access to all nodes from my laptop, I can do this by first getting public key from the jump host:
+
+```bash
+scp malyna:~/.ssh/id_malyna.pub id_malyna.pub
+```
+
+Then copying it to the worker nodes:
+
+```bash
+ssh-copy-id -f -i id_malyna.pub kalyna
+ssh-copy-id -f -i id_malyna.pub lohyna
+```
+
+*note: the `-f` is needed because by default `ssh-copy-id` checks if the private key corresponding to the public key being copied exists on the local machine, and if it doesn't, it will refuse to copy the public key. The `-f` option forces the copying of the public key even if the corresponding private key is not present on the local machine.*
+
 ## Troubleshooting
 
 ### WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
@@ -102,3 +123,15 @@ or
 ```
 ssh-keygen -R <IP address>
 ```
+
+### catch-22: How I locked myself out of the cluster and how I got back in
+
+When I set `ListenAddress` to the internal IP address of the Pi and then restarted my Pi's they got different IP addresses assigned by the router DHCP. This caused me to lose SSH access to the all nodes in the cluster because the SSH service was listening on the old IP address, which was no longer valid.
+
+I have few options to fix it:
+1. Connect a monitor and keyboard to the Pi and change the IP address back to the old one.
+2. Go to my router's admin panel and assign the old IP address to the Pi's MAC address, so that it gets the same IP address from the DHCP server.
+3. Edit sshd_config file on the SD card of the Pi by mounting it on another machine and changing the `ListenAddress` back to 0.0.0.0
+4. Re-install the operating system on the Pi, which will reset the SSH configuration to the default settings.
+
+Let's assume I don't have a monitor and keyboard, and I don't have physical access to the Pi, so I can't do option 3. I don't want to mess around with the router settings, so I don't want to do option 2. The easiest option for me is to re-install the operating system on the Pi, which will reset the SSH configuration to the default settings and allow me to connect to it again via SSH. The only downside of this option is that I will lose all the data on the Pi, so next time I will make sure to back up my data before making any changes to the SSH configuration. I should think of backdoor access to the cluster in case I lock myself out again, for example by setting up a jump host with a static IP address and allowing SSH access to the cluster only from that jump host.
