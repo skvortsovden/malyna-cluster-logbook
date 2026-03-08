@@ -1,8 +1,15 @@
 # SSH
 
+## Setup secure SSH access
+
+
+
 ## Troubleshooting
 
 ### WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
+
+Problem definition:
+> I had my Raspberry Pi running for a long time, and I had SSH access to it. However, I had to re-install the operating system on the Pi, and now I can't connect to it via SSH.
 
 When re-installing an operating system, the SSH host keys will be regenerated. This will cause the following error when trying to connect to the server:
 
