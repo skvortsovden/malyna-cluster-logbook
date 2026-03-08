@@ -1,6 +1,6 @@
 # malyna-cluster
 
-This is my home lab cluster build with 3 rapberry pi 4B.
+This is a logbook of my home lab cluster setup.
 
 # hardware
 
