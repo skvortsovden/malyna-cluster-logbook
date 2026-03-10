@@ -76,3 +76,42 @@ run python get.py
 
 > rule of thumb: put the layers that are less likely to change earlier in the Dockerfile to maximize cache reuse.
 
+## build stage and runtime stage aka multi-stage builds
+
+Files needed during the build stage but not at runtime can be excluded from the final image using multi-stage builds. This is done by defining multiple `FROM` statements in the Dockerfile, where the first stage is used for building the application and the second stage is used for creating the final image. The final image can copy only the necessary files from the build stage, resulting in a smaller, more secure, more efficient image.
+
+One-stage build:
+
+```Dockerfile
+from docker.io/library/python:3.10-alpine
+run pip install requests
+copy get.py get.py
+```
+
+Size of the image built with one-stage build is 70.4 MB:
+
+```bash
+devops@malyna:~ $ podman images
+REPOSITORY                          TAG            IMAGE ID      CREATED             SIZE
+localhost/ostage                    latest         77037dacc3ed  3 minutes ago       70.3 MB
+```
+
+Multi-stage build:
+
+```Dockerfile
+# build stage
+from docker.io/library/python:3.10-alpine as build
+run pip install requests
+copy get.py get.py
+# runtime stage
+from docker.io/library/python:3.10-alpine
+copy --from=build get.py get.py
+```
+
+Size of the image built with multi-stage build is 58.7 MB:
+
+```bash
+devops@malyna:~ $ podman images
+REPOSITORY                          TAG            IMAGE ID      CREATED             SIZE
+localhost/mstage                    latest         e2c86272fdc0  About a minute ago  58.7 MB
+```
