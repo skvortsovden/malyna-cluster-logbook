@@ -41,7 +41,7 @@ TriggeredBy: ○ podman.socket
 
 Distroless images include only what an app needs to run (no shell or package manager), making them smaller and more secure. They’re typically produced via multi-stage builds that copy only runtime artifacts into a minimal base.
 
-```
+```Dockerfile
 from docker.io/library/python:3.12-slim AS builder
 workdir /app
 copy hello.py .
@@ -53,3 +53,24 @@ copy --from=builder /app/hello.py .
 
 cmd ["/app/hello.py"]
 ```
+
+## layers caching order and cache invalidation
+
+If you have a Dockerfile with multiple layers, the caching mechanism will cache each layer separately. When you build the image again, Docker will check if any of the layers have changed. If a layer has changed, Docker will invalidate the cache for that layer and all subsequent layers. This means that if you change a layer that is early in the Dockerfile, it will cause all subsequent layers to be rebuilt, even if they haven't changed. Therefore, it's important to order your Dockerfile layers in a way that minimizes changes to early layers to take advantage of caching effectively.
+
+```Dockerfile
+from docker.io/library/python:3.10-alpine
+copy get.py get.py
+run pip install requests
+run python get.py
+```
+
+In this example, if you change the `get.py` file, it will invalidate the cache for the `copy get.py get.py` layer and all subsequent layers (`run pip install requests` and `run python get.py`). To optimize caching, you could reorder the layers like this:
+
+```Dockerfile
+from docker.io/library/python:3.10-alpine
+run pip install requests
+copy get.py get.py
+run python get.py
+```
+

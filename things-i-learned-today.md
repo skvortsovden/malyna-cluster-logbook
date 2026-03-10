@@ -1,3 +1,6 @@
+## 2026-03-10
+- [how layers caching order affects cache invalidation in container builds](containers.md#layers-caching-order-and-cache-invalidation)
+
 ## 2026-03-08
 
 - [how to remove old host key from known_hosts file](ssh.md#warning-remote-host-identification-has-changed)
