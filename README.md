@@ -27,6 +27,12 @@ This is a logbook of my home lab cluster setup.
 
 ## logbook records
 
+### 2026-03-16
+
+- installed [Grafana Alloy](https://grafana.com/docs/alloy/latest/set-up/install/linux/) on each node to monitor system metrics and visualize them in Grafana dashboards
+  - grafana alloy is running as a **systemd service** on each node, collecting metrics and sending them to the Grafana
+  - grafana alloy hostname and other default configuration added in /etc/alloy/config.alloy
+
 ### 2026-03-08
 
 - ssh key-based authentication configured on all nodes
