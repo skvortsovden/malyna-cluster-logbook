@@ -33,7 +33,7 @@ This is a logbook of my home lab cluster setup.
   - grafana alloy is running as a **systemd service** on each node, collecting metrics and sending them to the Grafana
   - grafana alloy hostname and other default configuration added in /etc/alloy/config.alloy
 - re-installed OS from scratch for `kalyna` because it was unreachable, no ip assigned by DHCP on router
-- installed tailscale client on each node to create a secure mesh network between them, allowing me to access them remotely without worrying about dynamic IP addresses assigned by the router DHCP
+- installed [tailscale](https://tailscale.com/docs/install/linux#mainstream-distributions) client on each node to create a secure mesh network between them, allowing me to access them remotely without worrying about dynamic IP addresses assigned by the router DHCP
   - tailscale is running as a **systemd service** `tailscaled` on each node, automatically connecting to the mesh network on boot
   
 ### 2026-03-08
