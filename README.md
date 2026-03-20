@@ -27,6 +27,23 @@ This is a logbook of my home lab cluster setup.
 
 ## logbook records
 
+### 2026-03-20
+
+#### grafana alloy is failing to send metrics with HTTP 401 after reboot of all nodes
+
+today after reboot of all nodes I spotted that grafana alloy is failing to send metrics with HTTP 401
+
+```
+Mar 20 16:21:12 malyna alloy[1176]: ts=2026-03-20T15:21:12.568780257Z level=error msg="final error sending batch, no retries left, dropping data" component_path=/ component_id=loki.write.grafana_cloud_loki component=endpoint host=logs-prod-012.grafana.net status=401 tenant="" error="server returned HTTP status 401 Unauthorized (401): {\"status\":\"error\",\"error\":\"authentication error: invalid token\"}"
+```
+
+after two hours of doing nothing I realizzed it's fixed itself
+
+```
+Mar 20 17:41:49 malyna alloy[1176]: ts=2026-03-20T16:41:49.346904273Z level=info msg="reporting Alloy stats" date=2026-03-20T17:41:49.346+01:00
+Mar 20 17:41:49 malyna alloy[1176]: ts=2026-03-20T16:41:49.551465169Z level=info msg="usage report sent with success"
+```
+
 ### 2026-03-16
 
 - installed [Grafana Alloy](https://grafana.com/docs/alloy/latest/set-up/install/linux/) on each node to monitor system metrics and visualize them in Grafana dashboards
