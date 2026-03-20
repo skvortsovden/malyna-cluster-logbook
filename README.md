@@ -29,6 +29,8 @@ This is a logbook of my home lab cluster setup.
 
 ### 2026-03-20
 
+- [installed k3s on the cluster](kubernetes.md#installing-k3s-on-raspberry-pi-cluster)
+
 #### grafana alloy is failing to send metrics with HTTP 401 after reboot of all nodes
 
 today after reboot of all nodes I spotted that grafana alloy is failing to send metrics with HTTP 401
