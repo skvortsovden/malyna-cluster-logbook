@@ -2,6 +2,9 @@
 
 - [how to enable podman API service when systemd is not an option](containers.md#enable-a-listening-service-for-api-access-to-podman-commands-when-systemd-is-not-an-option)
 - [how to connect k3s to gitlab as a runner using Helm](gitlab.md#add-k3s-cluster-to-gitlab-as-runner)
+- [how to migrate local git repository to new remote repository](git.md#migrate-local-repository-to-new-remote-repository)
+- [how to explicitly specify the helper image for GitLab Runner](gitlab.md#explicitly-specify-the-helper-image-for-the-runner)
+
 
 ## 2026-03-19
 
