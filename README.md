@@ -29,6 +29,12 @@ This is a logbook of my home lab cluster setup.
   - hostname: lohyna
   - role: worker
 
+## kubernetes workloads
+
+- gitlab-runner deployment in gitlab-runner namespace
+- kube-state-metrics deployment in monitoring namespace
+- hello-linux deployment in hello-linux namespace
+
 ## logbook records
 
 ### 2026-03-20
