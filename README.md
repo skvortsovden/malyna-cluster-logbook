@@ -2,7 +2,7 @@
 
 This is a logbook of my home lab cluster setup.
 
-![cluster-photo.jpg](cluster-photo.jpg)
+<img src="cluster-photo.jpg" width="180" alt="cluster photo" />
 
 ## hardware
 
@@ -12,6 +12,10 @@ This is a logbook of my home lab cluster setup.
 
 ## software
 - Raspberry Pi OS Lite (64-bit) a port of Debian Trixie with no desktop environment
+- installed services
+  - alloy.service (all nodes)
+  - tailscaled.service (all nodes)
+  - k3s.service (malyna)
 
 ## configuration
 
@@ -26,6 +30,10 @@ This is a logbook of my home lab cluster setup.
   - role: worker
 
 ## logbook records
+
+### 2026-03-20
+- extended Grafana Alloy configuration to collect custom metrics about directory sizes on `lohyna` node and visualize them in Grafana dashboards
+  - [added how-to here](monitoring.md#how-to-get-directory-sizes-on-linux-machine-as-metrics-in-grafana)
 
 ### 2026-03-20
 
