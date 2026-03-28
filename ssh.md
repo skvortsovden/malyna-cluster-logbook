@@ -99,6 +99,16 @@ ssh-copy-id -f -i id_malyna.pub lohyna
 
 ## Troubleshooting
 
+### how to open (Grafana Alloy) UI running on a remote server via SSH on my local machine
+
+One way to access a web UI running on a remote server is to use SSH port forwarding. This allows you to securely access the UI through an encrypted SSH tunnel.
+
+```bash
+ssh -L 12345:localhost:12345 malyna
+```
+
+where `12345` is the port on which the UI (in this example Grafana Alloy UI) is running on the remote server, and `malyna` is the hostname or IP address of the remote server.
+
 ### WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
 
 Problem definition:

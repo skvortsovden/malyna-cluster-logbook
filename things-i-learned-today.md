@@ -1,5 +1,7 @@
 ## 2026-03-28
 - [how to get directory sizes on linux machine as metrics in grafana](monitoring.md#how-to-get-directory-sizes-on-linux-machine-as-metrics-in-grafana)
+- [how to open (Grafana Alloy) UI running on a remote server via SSH on my local machine](ssh.md#how-to-open-grafana-alloy-ui-running-on-a-remote-server-via-ssh-on-my-local-machine)
+
 
 ## 2026-03-20
 
