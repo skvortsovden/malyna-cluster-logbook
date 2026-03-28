@@ -1,3 +1,6 @@
+## 2026-03-28
+- [how to get directory sizes on linux machine as metrics in grafana](monitoring.md#how-to-get-directory-sizes-on-linux-machine-as-metrics-in-grafana)
+
 ## 2026-03-20
 
 - [how to enable podman API service when systemd is not an option](containers.md#enable-a-listening-service-for-api-access-to-podman-commands-when-systemd-is-not-an-option)
