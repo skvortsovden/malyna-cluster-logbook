@@ -11,7 +11,7 @@ This is a logbook of my home lab cluster setup.
 - 1x usb hub anker with 6 usb ports
 
 ## software
-- Raspberry Pi OS Lite (64-bit) a port of Debian Trixie with no desktop environment
+- Raspberry Pi OS Lite (64-bit) a port of Debian Trixie with no desktop environment (all)
 - installed services
   - alloy.service (all nodes)
   - tailscaled.service (all nodes)
